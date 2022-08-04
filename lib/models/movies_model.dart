@@ -1,5 +1,5 @@
-class MoviesModel {
-  MoviesModel({
+class Movies {
+  Movies({
     required this.averageRating,
     required this.backdropPath,
     required this.createdBy,
@@ -37,7 +37,7 @@ class MoviesModel {
   late final int totalPages;
   late final int totalResults;
 
-  MoviesModel.fromJson(Map<String, dynamic> json) {
+  Movies.fromJson(Map<String, dynamic> json) {
     averageRating = json['average_rating'];
     backdropPath = json['backdrop_path'];
     createdBy = CreatedBy.fromJson(json['created_by']);
