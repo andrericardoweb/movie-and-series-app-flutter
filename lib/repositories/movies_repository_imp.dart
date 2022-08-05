@@ -12,5 +12,4 @@ class MoviesRepositoryImp implements MoviesRepository {
     var result = await _dioService.getDio().get(API.REQUEST_MOVIE_LIST);
     return Movies.fromJson(result.data);
   }
-
 }

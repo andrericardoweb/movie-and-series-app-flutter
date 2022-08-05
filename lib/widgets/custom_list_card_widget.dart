@@ -10,28 +10,41 @@ class CustomListCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 200,
-      decoration: const BoxDecoration(color: Colors.black54),
+      decoration: BoxDecoration(
+        color: Colors.black54,
+        borderRadius: BorderRadius.circular(16),
+      ),
       child: Row(
         children: [
-          Image.network(API.REQUEST_IMG(movie.posterPath)),
+          ClipRRect(
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(16),
+              bottomLeft: Radius.circular(16),
+            ),            
+            child: Image.network(
+              API.REQUEST_IMG(movie.posterPath),
+              loadingBuilder: (_, child, progress) {
+                if (progress == null) return child;
+                return const CircularProgressIndicator.adaptive();
+              },
+            ),
+          ),
           Expanded(
               child: Padding(
-                padding: const EdgeInsets.all(8),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      movie.title, 
-                      style: Theme.of(context).textTheme.headline6,
-                      softWrap: true,
-                      overflow: TextOverflow.visible,
-                    ),
-                    const Spacer(),
-                    Text('Popularidade: ${movie.popularity.toString()}'),
-                    const SizedBox(height: 10),
-                    Text('Votos: ${movie.voteAverage.toString()}'),
-                  ]
-                ),
+            padding: const EdgeInsets.all(8),
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text(
+                movie.title,
+                style: Theme.of(context).textTheme.headline6,
+                softWrap: true,
+                overflow: TextOverflow.visible,
+              ),
+              const Spacer(),
+              Text('Popularidade: ${movie.popularity.toString()}'),
+              const SizedBox(height: 10),
+              Text('Votos: ${movie.voteAverage.toString()}'),
+            ]),
           ))
         ],
       ),
