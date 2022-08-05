@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies_series_flutter/controllers/movie_controller.dart';
+import 'package:movies_series_flutter/models/movies_model.dart';
 import 'package:movies_series_flutter/repositories/movies_repository_imp.dart';
 import 'package:movies_series_flutter/service/dio_service_imp.dart';
 
@@ -20,12 +21,19 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
-      ),
-      body: const Center(
-        child: Text('HomePage'),
-      ),
-    );
+        appBar: AppBar(
+          title: const Text('Home'),
+        ),
+        body: ValueListenableBuilder<Movies?>(
+            valueListenable: _controller.movies,
+            builder: (_, movies, __) {
+              return movies != null
+                  ? ListView.builder(
+                      itemCount: movies.listMovies.length,
+                      itemBuilder: (_, idx) =>
+                          Text(movies.listMovies[idx].title),
+                    )
+                  : Container();
+            }));
   }
 }

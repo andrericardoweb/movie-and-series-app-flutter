@@ -31,7 +31,7 @@ class Movies {
   late final String posterPath;
   late final bool public;
   late final List<Movie> listMovies;
-  late final String revenue;
+  late final num revenue;
   late final int runtime;
   late final String sortBy;
   late final int totalPages;
@@ -58,6 +58,7 @@ class Movies {
   }
 
   Map<String, dynamic> toJson() {
+    // ignore: no_leading_underscores_for_local_identifiers
     final _data = <String, dynamic>{};
     _data['average_rating'] = averageRating;
     _data['backdrop_path'] = backdropPath;
@@ -100,6 +101,7 @@ class CreatedBy {
   }
 
   Map<String, dynamic> toJson() {
+    // ignore: no_leading_underscores_for_local_identifiers
     final _data = <String, dynamic>{};
     _data['gravatar_hash'] = gravatarHash;
     _data['id'] = id;
@@ -140,7 +142,7 @@ class Movie {
   late final String releaseDate;
   late final String title;
   late final bool video;
-  late final double voteAverage;
+  late final num voteAverage;
   late final int voteCount;
 
   Movie.fromJson(Map<String, dynamic> json) {
@@ -162,6 +164,7 @@ class Movie {
   }
 
   Map<String, dynamic> toJson() {
+    // ignore: no_leading_underscores_for_local_identifiers
     final _data = <String, dynamic>{};
     _data['adult'] = adult;
     _data['backdrop_path'] = backdropPath;

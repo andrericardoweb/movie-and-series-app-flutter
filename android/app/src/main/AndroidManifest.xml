@@ -1,6 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="dev.andrericardo.movies_series_flutter">
-   <application
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
         android:label="movies_series_flutter"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
