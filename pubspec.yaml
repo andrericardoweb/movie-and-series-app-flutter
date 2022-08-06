@@ -11,6 +11,8 @@ dependencies:
     sdk: flutter
   dio:
   lottie:
+  cached_network_image:
+  shared_preferences:
 
 dev_dependencies:
   flutter_test:
