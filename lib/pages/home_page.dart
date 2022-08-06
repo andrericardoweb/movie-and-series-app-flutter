@@ -45,6 +45,22 @@ class _HomePageState extends State<HomePage> {
                           const SizedBox(height: 16),
                           TextField(
                             onChanged: _controller.onChanged,
+                            autofocus: false,
+                            style: const TextStyle(color: Colors.white70),
+                            decoration: const InputDecoration(
+                              filled: true,
+                              fillColor: Colors.black26,
+                              border: OutlineInputBorder(),
+                              hintText: 'Search',
+                              suffixIcon: Icon(
+                                Icons.search_outlined,
+                                color: Colors.white70,
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Colors.white70, width: 2.0),
+                              ),
+                            ),
                           ),
                         ],
                       ),
