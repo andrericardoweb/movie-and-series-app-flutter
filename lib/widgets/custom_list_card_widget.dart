@@ -33,12 +33,15 @@ class CustomListCardWidget extends StatelessWidget {
                   topLeft: Radius.circular(16),
                   bottomLeft: Radius.circular(16),
                 ),
-                child: Image.network(
-                  API.REQUEST_IMG(movie.posterPath),
-                  loadingBuilder: (_, child, progress) {
-                    if (progress == null) return child;
-                    return const CircularProgressIndicator.adaptive();
-                  },
+                child: Hero(
+                  tag: movie.id,
+                  child: Image.network(
+                    API.REQUEST_IMG(movie.posterPath),
+                    loadingBuilder: (_, child, progress) {
+                      if (progress == null) return child;
+                      return const CircularProgressIndicator.adaptive();
+                    },
+                  ),
                 ),
               ),
               Expanded(
