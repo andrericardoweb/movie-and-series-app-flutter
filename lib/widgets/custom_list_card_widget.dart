@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies_series_flutter/models/movies_model.dart';
-import 'package:movies_series_flutter/pages/datails_page.dart';
+import 'package:movies_series_flutter/pages/details_page.dart';
 import 'package:movies_series_flutter/utils/apis.utils.dart';
 
 class CustomListCardWidget extends StatelessWidget {
@@ -14,7 +14,10 @@ class CustomListCardWidget extends StatelessWidget {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (_) => DetailsPage(movie: movie)),
+            MaterialPageRoute(
+              builder: (_) => DetailsPage(movie: movie),
+              fullscreenDialog: true,
+            ),
           );
         },
         child: Container(
