@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:movies_series_flutter/controllers/movie_controller.dart';
+import 'package:movies_series_flutter/decorators/movies_cache_repository_decorator.dart';
 import 'package:movies_series_flutter/models/movies_model.dart';
 import 'package:movies_series_flutter/repositories/movies_repository_imp.dart';
 import 'package:movies_series_flutter/service/dio_service_imp.dart';
@@ -15,8 +16,10 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final MovieController _controller = MovieController(
-    MoviesRepositoryImp(
-      DioServiceImp(),
+    MoviesCacheRepositoryDecorator(
+      MoviesRepositoryImp(
+        DioServiceImp(),
+      ),
     ),
   );
 
@@ -29,7 +32,7 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 40),
+              const SizedBox(height: 16),
               ValueListenableBuilder<Movies?>(
                   valueListenable: _controller.movies,
                   builder: (__, movies, _) {
@@ -50,18 +53,17 @@ class _HomePageState extends State<HomePage> {
                             decoration: const InputDecoration(
                               filled: true,
                               fillColor: Colors.black26,
-                              border: OutlineInputBorder(),
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.black12),
+                              ),
                               hintText: 'Search',
                               suffixIcon: Icon(
                                 Icons.search_outlined,
                                 color: Colors.white70,
                               ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Colors.white70, width: 2.0),
-                              ),
                             ),
                           ),
+                          const SizedBox(height: 16),
                         ],
                       ),
                     );
