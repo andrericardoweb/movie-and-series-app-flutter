@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:movies_series_flutter/pages/home_page.dart';
+import 'package:movies_series_flutter/core/inject/inject.dart';
+import 'package:movies_series_flutter/features/movie/presentation/ui/pages/home_page.dart';
 
 void main() {
+  Inject.initialize();
   runApp(const MyApp());
 }
 
@@ -17,5 +19,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
